@@ -1,21 +1,27 @@
 import React, { useContext } from "react";
 import { CountryContext } from "../contexts/CountryContext";
 import CountryPill from "./CountryPill";
+import Loader from "./Loader";
 
 export default function ResultCard({ country }) {
     const { countryNames } = useContext(CountryContext);
 
-    const borderCountries = country && country.borders.length !== 0 ? country.borders.map((countryCode) => {
-        let name, code;
-        countryNames.forEach((countryItem) => {
-            if (countryItem.code === countryCode) {
-                name = countryItem.name;
-                code = countryCode;
-            }
-        });
+    const borderCountries =
+        country && country.borders.length !== 0 ? (
+            country.borders.map((countryCode) => {
+                let name, code;
+                countryNames.forEach((countryItem) => {
+                    if (countryItem.code === countryCode) {
+                        name = countryItem.name;
+                        code = countryCode;
+                    }
+                });
 
-        return <CountryPill code={code} name={name} key={code} />;
-    }) : <span>No Border Countries</span>;
+                return <CountryPill code={code} name={name} key={code} />;
+            })
+        ) : (
+            <span>No Border Countries</span>
+        );
 
     return country ? (
         <div className="details">
@@ -67,6 +73,6 @@ export default function ResultCard({ country }) {
             </div>
         </div>
     ) : (
-        <div className="">None</div>
+        <Loader />
     );
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import sprites from "../img/sprites.svg";
 import { CountryContext } from "../contexts/CountryContext";
 import { ThemeContext } from "../contexts/ThemeContext";
@@ -6,6 +7,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 export default function Search() {
     const { setCountries, fetchCountries } = useContext(CountryContext);
     const { lightMode } = useContext(ThemeContext);
+
     const getCountryPerRegion = async (region) => {
         if (region === "all") {
             fetchCountries();
@@ -21,21 +23,18 @@ export default function Search() {
     const handleSearch = async (e) => {
         const query = e.target.value;
 
-
-        if(query !== ''){
-            try{
-
+        if (query !== "") {
+            try {
                 const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}
                 `);
                 const data = await response.json();
-        
+
                 setCountries(data);
-            }
-            catch(err){
+            } catch (err) {
                 console.log(err.status);
-                alert('No result')
+                alert("No result");
             }
-        }else{
+        } else {
             fetchCountries();
         }
     };

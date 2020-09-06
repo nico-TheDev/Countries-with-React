@@ -1,12 +1,16 @@
-import React,{ useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function Card({ details }) {
-    const { lightMode } = useContext(ThemeContext)
+    const { lightMode } = useContext(ThemeContext);
 
     return (
-        <Link className={lightMode ? "card lightMode" : "card"} to={`/country/${details.alpha3Code}`}>
+        <Link
+            className={lightMode ? "card lightMode" : "card"}
+            to={`/country/${details.alpha3Code}`}
+        >
             <div className="card__cover">
                 <img
                     src={details.flag}
@@ -17,17 +21,17 @@ export default function Card({ details }) {
             <div className="card__text">
                 <h3 className="card__name">{details.name}</h3>
                 <p className="card__population">
-                    Population:{" "}
+                    Population:
                     <span className="population-count">
                         {details.population}
                     </span>
                 </p>
                 <p className="card__region">
-                    Region:{" "}
+                    Region:
                     <span className="region-name">{details.region}</span>
                 </p>
                 <p className="card__capital">
-                    Capital:{" "}
+                    Capital:
                     <span className="capital-name">{details.capital}</span>
                 </p>
             </div>

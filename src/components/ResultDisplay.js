@@ -26,7 +26,6 @@ export default withRouter(function ResultDisplay({ match, location }) {
                     `https://restcountries.eu/rest/v2/alpha/${countryCode}`
                 );
                 const data = await response.json();
-                console.log(data);
                 setCountry(data);
                 setLoading(false);
             } catch (err) {

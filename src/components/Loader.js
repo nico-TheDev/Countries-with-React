@@ -1,6 +1,6 @@
 import React,{ useContext } from "react";
 import { CountryContext } from "../contexts/CountryContext";
-import './loader.scss';
+import '../css/loader.scss';
 
 
 export default function Loader() {
