@@ -40,7 +40,7 @@ export default function ResultCard({ country }) {
                         Native Name:{country.nativeName}
                     </p>
                     <p className="details__population">
-                        Population:{country.population}
+                        Population:{Number(country.population).toLocaleString()}
                     </p>
                     <p className="details__region">Region:{country.region}</p>
                     <p className="details__subregion">

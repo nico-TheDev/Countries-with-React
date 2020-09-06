@@ -23,7 +23,7 @@ export default function Card({ details }) {
                 <p className="card__population">
                     Population:
                     <span className="population-count">
-                        {details.population}
+                        {Number(details.population).toLocaleString()}
                     </span>
                 </p>
                 <p className="card__region">
